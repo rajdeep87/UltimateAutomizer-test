@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config date="1498198986484" transient="false">
+	<site updateable="true" url="platform:/base/" enabled="true" policy="USER-EXCLUDE">
+		<feature id="BA_FeatureDependenciesCommandlineE4" version="0.1.18" url="features/BA_FeatureDependenciesCommandlineE4_0.1.18/">
+		</feature>
+		<feature id="BA_FeatureUltimateCommon" version="0.1.18" url="features/BA_FeatureUltimateCommon_0.1.18/">
+		</feature>
+		<feature id="BA_FeatureUltimateCommandLine" version="0.1.18" url="features/BA_FeatureUltimateCommandLine_0.1.18/">
+		</feature>
+	</site>
+</config>

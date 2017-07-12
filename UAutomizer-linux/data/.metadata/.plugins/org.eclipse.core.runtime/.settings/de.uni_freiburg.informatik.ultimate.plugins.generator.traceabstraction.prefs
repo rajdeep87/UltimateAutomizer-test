@@ -1,0 +1,11 @@
+Command\ for\ external\ solver=cvc4 --tear-down-incremental --rewrite-divk --print-success --lang smt
+Compute\ Hoare\ Annotation\ of\ negated\ interpolant\ automaton,\ abstraction\ and\ CFG=true
+Compute\ Interpolants\ along\ a\ Counterexample=FPandBP
+Interpolant\ automaton=TWOTRACK
+Interpolants\ consolidation=false
+Logic\ for\ external\ solver=AUFBV
+Positions\ where\ we\ compute\ the\ Hoare\ Annotation=LoopsAndPotentialCycles
+SMT\ solver=External_ModelsAndUnsatCoreMode
+Trace\ refinement\ strategy=WOLF
+Use\ separate\ solver\ for\ trace\ checks=true
+eclipse.preferences.version=1

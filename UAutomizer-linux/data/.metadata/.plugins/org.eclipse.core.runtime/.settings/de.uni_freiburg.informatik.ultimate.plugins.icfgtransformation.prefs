@@ -1,0 +1,3 @@
+FastUPR\ replacement\ mode=REPLACE_EXIT_EDGE
+TransformationType=LOOP_ACCELERATION_EXAMPLE
+eclipse.preferences.version=1
