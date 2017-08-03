@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 int U1=0;
 int U2=1;
@@ -127,13 +128,12 @@ int main()
   _Bool 	 REQUEST1, REQUEST2, REQUEST3, REQUEST4;
   unsigned char GRANT_O;
   initial();
-  _Bool    MY_NONDET_VAL;
-  __ASTREE_volatile_input((MY_NONDET_VAL));
+  
   while(1) {
-    REQUEST1=MY_NONDET_VAL;
-    REQUEST2=MY_NONDET_VAL;
-    REQUEST3=MY_NONDET_VAL;
-    REQUEST4=MY_NONDET_VAL;
+    REQUEST1=__VERIFIER_nondet_bool();
+    REQUEST2=__VERIFIER_nondet_bool();
+    REQUEST3=__VERIFIER_nondet_bool();
+    REQUEST4=__VERIFIER_nondet_bool();
     b03(clock,REQUEST1, REQUEST2, REQUEST3, REQUEST4, &GRANT_O);
     assert(GRANT_O==0 || GRANT_O==8 || GRANT_O==4 || GRANT_O==2 || GRANT_O==1);
   }

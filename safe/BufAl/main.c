@@ -4,7 +4,8 @@
 ## Task:    Buffer Allocation ##
 ###############################*/
 
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_main{
   _Bool alloc;
@@ -75,6 +76,7 @@ void design(_Bool clock, _Bool alloc_raw, _Bool *nack, unsigned char *alloc_addr
 		       !smain.busy[15] ? 15 : 0;
 
 }
+
 int main() {
  
   _Bool clock=0;
@@ -84,15 +86,11 @@ int main() {
   _Bool free_raw;
   unsigned char free_addr_raw;
 
-  _Bool    MY_NONDET_Bool;
-  __ASTREE_volatile_input((MY_NONDET_Bool));
-  unsigned char    MY_NONDET_char;
-  __ASTREE_volatile_input((MY_NONDET_char));
   initial(&smain);
   while(1) {
-   alloc_raw = MY_NONDET_Bool;
-   free_raw = MY_NONDET_Bool;
-   free_addr_raw = MY_NONDET_char;
+   alloc_raw = __VERIFIER_nondet_bool();
+   free_raw = __VERIFIER_nondet_bool();
+   free_addr_raw = __VERIFIER_nondet_uchar();
    design(clock, alloc_raw, &nack, &alloc_addr, free_raw, free_addr_raw);
    assert(((((smain.count >> 4) & 1) == 0) || ((smain.count & 0xF) == 0)));
   }

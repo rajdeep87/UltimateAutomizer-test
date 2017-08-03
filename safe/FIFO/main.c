@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 int MSBD = 3;
 int LAST = 15;
@@ -125,15 +126,11 @@ int main() {
 
   initial_rbFIFO();
   initial_srFIFO();
-  _Bool    nd_b;
-  __ASTREE_volatile_input((nd_b));
-  unsigned char    nd_c;
-  __ASTREE_volatile_input((nd_c));
   
   while(1) {
-    push = nd_b;
-    pop = nd_b;
-    dataIn = nd_c;
+    push = __VERIFIER_nondet_bool();
+    pop = __VERIFIER_nondet_bool();
+    dataIn = __VERIFIER_nondet_uchar();
     design(clock, dataIn, push, pop, &equal);
   }
   return 0;

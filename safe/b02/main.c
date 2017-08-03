@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 int A=0;
 int B=1;
@@ -80,11 +81,9 @@ int main()
   _Bool  clock=0;
   initial();
   assert(smain.stato==A);
-  _Bool    MY_NONDET_VAL;
-  __ASTREE_volatile_input((MY_NONDET_VAL));
 
   while(1) {
-    LINEA=MY_NONDET_VAL;
+    LINEA=__VERIFIER_nondet_bool();
     b02(clock,LINEA,&U);
     if(smain.stato==D) {
       b02(clock,LINEA,&U);

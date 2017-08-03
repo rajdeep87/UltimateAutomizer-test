@@ -3,8 +3,9 @@
 ## Date:    8/3/2017          ##
 ## Task:    CRC Generator     ##
 ###############################*/
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
-#include <assert.h>
 
 int CRC_INITIAL_VALUE = 0xFFFFFFFF;
 int CRC_REMAINDER = 0xC704DD7B;
@@ -143,19 +144,15 @@ int main()
   _Bool 	  crc_ok;	// the last CRC check cycle was OK
   unsigned int crc;		// direct acces to the CRC value 
 
-  _Bool    nd_b;
-  __ASTREE_volatile_input((nd_b));
-  unsigned char   nd_c;
-  __ASTREE_volatile_input((nd_c));
   initial();
   while(1) {
-    clk=nd_b;
-    clken=nd_b;
-    reset=nd_b;
-    load=nd_b;
-    compute=nd_b;
-    data_in=nd_c;
-    data_out=nd_c;
+    clk=__VERIFIER_nondet_bool();
+    clken=__VERIFIER_nondet_bool();
+    reset=__VERIFIER_nondet_bool();
+    load=__VERIFIER_nondet_bool();
+    compute=__VERIFIER_nondet_bool();
+    data_in=__VERIFIER_nondet_uchar();
+    data_out=__VERIFIER_nondet_uchar();
     crc_main(clk,clken,reset,load,compute,data_in,data_out,&crc_ok,&crc);
 
     // property

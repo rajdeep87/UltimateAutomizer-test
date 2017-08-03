@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_main{
   unsigned char b[8];
@@ -80,11 +81,9 @@ int main() {
   _Bool clock;
   unsigned char from;
   unsigned char to;
-  unsigned char   nd_c;
-  __ASTREE_volatile_input((nd_c));
   initial_main();
   while(1) {
-    from = nd_c;
+    from = __VERIFIER_nondet_uchar();
     to = nd_c; 
     four_by_four(clock, from, to);
   }

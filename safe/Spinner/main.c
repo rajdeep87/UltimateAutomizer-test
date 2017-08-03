@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_main{
   unsigned int inr;
@@ -57,16 +58,10 @@ int main() {
   unsigned char amount;
   unsigned int din;
   unsigned int dout;
-  _Bool    nd_b;
-  __ASTREE_volatile_input((nd_b));
-  unsigned int    nd_i;
-  __ASTREE_volatile_input((nd_i));
-  unsigned char   nd_c;
-  __ASTREE_volatile_input((nd_c));
   while(1) {
-    spin=nd_b;
-    amount=nd_c;
-    din=nd_i;
+    spin=__VERIFIER_nondet_bool();
+    amount=__VERIFIER_nondet_uchar();
+    din=__VERIFIER_nondet_uint();
     spinner(clock, spin, amount, din, &dout);
   }
   return 0;

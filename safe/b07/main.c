@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 int S_RESET = 0;
 int S_START = 1;
@@ -125,11 +126,9 @@ int main()
     unsigned char PUNTI_RETTA;
     _Bool 	 START;
     _Bool 	 clock=0;
-    _Bool    MY_NONDET_VAL;
-    __ASTREE_volatile_input((MY_NONDET_VAL));
     initial();
     while(1) { 
-      START=MY_NONDET_VAL;
+      START=__VERIFIER_nondet_bool();
       b07(&PUNTI_RETTA, START, clock);
       assert ((sb.x&0xFF)!=148);
     }

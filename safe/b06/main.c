@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_b06 {
     unsigned char CC_MUX, USCITE;
@@ -148,12 +149,10 @@ int main()
   _Bool  ENABLE_COUNT;
   _Bool  ACKOUT;
   _Bool  CONT_EQL;
-  _Bool    MY_NONDET_VAL;
-  __ASTREE_volatile_input((MY_NONDET_VAL));
   initial();
   while (1) {
-    EQL=MY_NONDET_VAL;
-    CONT_EQL=MY_NONDET_VAL;
+    EQL=__VERIFIER_nondet_bool();
+    CONT_EQL=__VERIFIER_nondet_bool();
     b06(&CC_MUX, EQL, &USCITE, clock, &ENABLE_COUNT, &ACKOUT, CONT_EQL);
     assert (ENABLE_COUNT==ACKOUT);
     assert ((USCITE&0x3)!=2);

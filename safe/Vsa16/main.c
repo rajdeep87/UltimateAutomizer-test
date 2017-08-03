@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 // Control states.
 int	 IF = 0;		// instruction fetch
@@ -183,12 +184,10 @@ int main()
   unsigned short int dataout;
   _Bool wr;
 
-  unsigned short int    nd_s;
-  __ASTREE_volatile_input((nd_s));
   initial_alu16();
   
-  datain=nd_s;
-  instruction=nd_s;
+  datain=__VERIFIER_nondet_uint();
+  instruction=__VERIFIER_nondet_uint();
   alu16(clk,&PC,instruction,&ALUOutput,datain,&dataout,&wr);
   alu16(clk,&PC,instruction,&ALUOutput,datain,&dataout,&wr);
   alu16(clk,&PC,instruction,&ALUOutput,datain,&dataout,&wr);

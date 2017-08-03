@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
-struct state_elements_barrel {
+struc stane_elements_barrel {
   unsigned char b0, r0;
   unsigned char b1, r1;
   unsigned char b2, r2;

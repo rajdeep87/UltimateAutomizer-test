@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 // parameters
   int BITS = 4;
@@ -249,12 +250,10 @@ int main()
   _Bool beverage;
   _Bool enable;
   
-  unsigned char   nd_c;
-  __ASTREE_volatile_input((nd_c));
   initial_vending(clock, deposit, &change, &beverage, &enable);
   initial_monitor(clock, deposit, beverage, change, &balance);
 
-  deposit = nd_c & 3;
+  deposit = __VERIFIER_nondet_uchar();
   vending(clock, deposit, &change, &beverage, &enable);
   monitor(clock, deposit, beverage, change, &balance);
 

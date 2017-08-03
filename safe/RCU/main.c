@@ -5,8 +5,8 @@
 // Verilog Author:  Fabio Somenzi                                   *
 // C Author:  Rajdeep Mukherjee                                     *
 // ****************************************************************** 
-
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 // parameter definition 
   int PASSES = 10;
@@ -205,11 +205,9 @@ int main() {
   // Initialization
   initial();
   
-  unsigned char   nd_c;
-  __ASTREE_volatile_input((nd_c));
   while(1) {
    
-   select = nd_c; // non-deterministic scheduler
+   select = __VERIFIER_nondet_uchar(); // non-deterministic scheduler
    // call rcu 
    rcu(clock, select);
    

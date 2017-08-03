@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 _Bool l64,l66,l68,l70,l72,l74,l76,l78,l80,l82,l84,l86,l88,l90,l92,
 l94,l96,l98,l100,l102,l104,l106,l108,l110,l112,l114,l116,l118,l120,l122,
@@ -165,41 +166,39 @@ i32,i34,i36,i38,i40,i42,i44,i46,i48,i50,i52,i54,i56,i58,i60,
 i62;
 
 _Bool *p0;
-  _Bool   nb;
-  __ASTREE_volatile_input((nb));
-  i2 = nb;
-  i4 = nb; 
-  i6 = nb; 
-  i8 = nb; 
-  i10 = nb;
-  i12 = nb;
-  i14 = nb;
-  i16 = nb;
-  i18 = nb;
-  i20 = nb;
-  i22 = nb;
-  i24 = nb;
-  i26 = nb;
-  i28 = nb;
-  i30 = nb; 
-  i32 = nb; 
-  i34 = nb; 
-  i36 = nb;
-  i38 = nb;
-  i40 = nb;
-  i42 = nb;
-  i44 = nb;
-  i46 = nb;
-  i48 = nb;
-  i50 = nb;
-  i52 = nb;
-  i54 = nb;
-  i56 = nb;
-  i58 = nb;
-  i60 = nb;
-  i62 = nb;
+  i2 = __VERIFIER_nondet_bool();
+  i4 = __VERIFIER_nondet_bool(); 
+  i6 = __VERIFIER_nondet_bool(); 
+  i8 = __VERIFIER_nondet_bool(); 
+  i10 = __VERIFIER_nondet_bool();
+  i12 = __VERIFIER_nondet_bool();
+  i14 = __VERIFIER_nondet_bool();
+  i16 = __VERIFIER_nondet_bool();
+  i18 = __VERIFIER_nondet_bool();
+  i20 = __VERIFIER_nondet_bool();
+  i22 = __VERIFIER_nondet_bool();
+  i24 = __VERIFIER_nondet_bool();
+  i26 = __VERIFIER_nondet_bool();
+  i28 = __VERIFIER_nondet_bool();
+  i30 = __VERIFIER_nondet_bool(); 
+  i32 = __VERIFIER_nondet_bool(); 
+  i34 = __VERIFIER_nondet_bool(); 
+  i36 = __VERIFIER_nondet_bool();
+  i38 = __VERIFIER_nondet_bool();
+  i40 = __VERIFIER_nondet_bool();
+  i42 = __VERIFIER_nondet_bool();
+  i44 = __VERIFIER_nondet_bool();
+  i46 = __VERIFIER_nondet_bool();
+  i48 = __VERIFIER_nondet_bool();
+  i50 = __VERIFIER_nondet_bool();
+  i52 = __VERIFIER_nondet_bool();
+  i54 = __VERIFIER_nondet_bool();
+  i56 = __VERIFIER_nondet_bool();
+  i58 = __VERIFIER_nondet_bool();
+  i60 = __VERIFIER_nondet_bool();
+  i62 = __VERIFIER_nondet_bool();
 
-  *p0 = nb;
+  *p0 = __VERIFIER_nondet_bool();
 
 _Bool na586,a598,a608,a626,a634,a644,a674,a680,a684,a692,a710,a718,a728,a752,a758,
 a762,a770,a788,a796,a806,a826,a832,a836,ni62,a850,a866,a872,a1056,na1058,a1066,

@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <assert.h>
 #include "rtfSimpleUartTx.c"
 #include "rtfSimpleUartRx.c"
 #include "edge_det.c"
@@ -57,8 +55,6 @@ void rtfSimpleUart(_Bool rst_i, _Bool clk_i, _Bool cyc_i, _Bool stb_i, _Bool we_
   _Bool cts_nint;
   _Bool ne;
   _Bool ee;
-  _Bool nb;
-  __ASTREE_volatile_input((nb));
   
   // parameters declared:
   int pClkFreq = 20000000;
@@ -81,7 +77,7 @@ void rtfSimpleUart(_Bool rst_i, _Bool clk_i, _Bool cyc_i, _Bool stb_i, _Bool we_
   dsrx_old = srtfSimpleUart.dsrx;
   
   // assign nondet to cs
-  cs = nb;
+  cs = __VERIFIER_nondet_bool();
 
   *ack_o = cs;
   *vol_o = cs && (((adr_i >> 2) & 3) == 0);
@@ -162,7 +158,7 @@ void rtfSimpleUart(_Bool rst_i, _Bool clk_i, _Bool cyc_i, _Bool stb_i, _Bool we_
     }
 
   // nondet boolean assignment
-  cts_nint = nb;
+  cts_nint = __VERIFIER_nondet_bool();
   // synchronize external signals
   srtfSimpleUart.ctsx = ((ctsx_old & 0x1) << 1) | (!cts_nint);
   srtfSimpleUart.dcdx = ((dcdx_old & 0x1) << 1) | (!dcd_ni);

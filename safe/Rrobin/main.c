@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_main {
   _Bool ack0;
@@ -54,13 +55,11 @@ int main() {
   _Bool ir1;
   _Bool ack0;
   _Bool ack1;
-  _Bool nd_b;
-  __ASTREE_volatile_input((nd_b));
   
   initial_main(ir0, ir1);
   while(1) {
-    ir0 = nd_b;
-    ir1 = nd_b;
+    ir0 = __VERIFIER_nondet_bool();
+    ir1 = __VERIFIER_nondet_bool();
     if(smain.req1==1 && smain.ack0==1) {
       rrobin(clock, ir0, ir1, &ack0, &ack1);
       assert(ack1==1);
