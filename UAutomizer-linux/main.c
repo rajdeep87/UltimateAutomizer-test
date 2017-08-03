@@ -181,23 +181,21 @@ void ms177() {
 
 _Bool i2,i4,i6,i8,i10,i12,i14,i16,i18,i20,i22,i24,i26;
 _Bool *p0;
-  _Bool   nb;
-  __ASTREE_volatile_input((nb));
-  i2 = nb;
-  i4 = nb; 
-  i6 = nb; 
-  i8 = nb; 
-  i10 = nb;
-  i12 = nb;
-  i14 = nb;
-  i16 = nb;
-  i18 = nb;
-  i20 = nb;
-  i22 = nb;
-  i24 = nb;
-  i26 = nb;
+  i2 = __VERIFIER_nondet_bool();
+  i4 = __VERIFIER_nondet_bool(); 
+  i6 = __VERIFIER_nondet_bool(); 
+  i8 = __VERIFIER_nondet_bool(); 
+  i10 = __VERIFIER_nondet_bool();
+  i12 = __VERIFIER_nondet_bool();
+  i14 = __VERIFIER_nondet_bool();
+  i16 = __VERIFIER_nondet_bool();
+  i18 = __VERIFIER_nondet_bool();
+  i20 = __VERIFIER_nondet_bool();
+  i22 = __VERIFIER_nondet_bool();
+  i24 = __VERIFIER_nondet_bool();
+  i26 = __VERIFIER_nondet_bool();
  
-  *p0 = nb;
+  *p0 = __VERIFIER_nondet_bool();
 
 _Bool a394,a410,a418,a430,a440,a456,a506,a518,a526,a530,na536,na572,a576,a584,a590,
 a594,a602,a610,a622,z0,z1,a630,c1,a650,a652,na648,a656,a664,a670,a674,
@@ -250,7 +248,7 @@ a1586,a1588,a1590,a1592,a1594,a1596,a1598,a1600,a1602,a1604,a1606,a1608,a1610,a1
 a1616,a1618,a1620;
 
 // assign nondet to c0
-  c0 = nb;
+  c0 = __VERIFIER_nondet_bool();
 
 // continuous assignments
 

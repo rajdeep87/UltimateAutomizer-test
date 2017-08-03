@@ -248,7 +248,7 @@ a1586,a1588,a1590,a1592,a1594,a1596,a1598,a1600,a1602,a1604,a1606,a1608,a1610,a1
 a1616,a1618,a1620;
 
 // assign nondet to c0
-  c0 = nb;
+  c0 = __VERIFIER_nondet_bool();
 
 // continuous assignments
 

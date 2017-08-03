@@ -1,7 +1,7 @@
 Command\ to\ execute\ witness\ verifier=
 Delete\ the\ .graphml\ file\ after\ verification=false
 Do\ not\ use\ ACSL=true
-Generate\ witnesses=true
+Generate\ witnesses=false
 Graph\ data\ architecture=UNUSED
 Graph\ data\ producer=UNUSED
 Graph\ data\ programhash=UNUSED
