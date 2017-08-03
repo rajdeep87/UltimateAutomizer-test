@@ -177,7 +177,7 @@ int main(void) {
     unsigned int data_out=0;
     _Bool data_array[8] = {0,0,0,0,0,0,0,0};
     _u8 data = nondet_uchar();
-    __CPROVER_assume(data <= 127);
+    __VERIFIER_assume(data <= 127);
 
     b = inb(UART_LS);
     assert(b == 0x60);
