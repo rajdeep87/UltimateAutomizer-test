@@ -1,196 +1,193 @@
 extern void __VERIFIER_error() __attribute__((noreturn));
 void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
-// Control states.
-int	 IF = 0;		// instruction fetch
-int  ID = 1;		// instruction decode
-int  EX = 2;		// execution
-int  MEM = 3;		// memory access
-int  WB = 4;		// write-back
-
-// Opcodes.
-int	 LW  = 0;
-int  SW    = 1;
-int  BEQZ  = 2;
-int  ALUop = 3;
-int  ADDI  = 4;
-int  SUBI  = 5;
-
-// ALU function codes.
-int	    ADD = 0;
-int		  SUB = 1;
-int		  AND = 2;
-int		  OR  = 3;
-int		  XOR = 4;
-int		  SRL = 5;
-
-struct state_elements_alu16 {
-  unsigned short int	Registers[4];	// regiter file
-  unsigned short int	  PC;			// program counter
-  unsigned short int	  NPC;			// next program counter
-  unsigned short int	  IR;			// instruction register
-  unsigned short int	  A;			// first ALU operand
-  unsigned short int	  B;			// second ALU operand
-  unsigned short int	  ALUOutput;		// ALU output register
-  _Bool		  Cond;			// comparison result
-  unsigned short int	  LMD;			// load memory data register
-  unsigned char	  State;		// state for non-pipelined unit
+struct state_elements_control {
+  unsigned char prev;
+  _Bool		Lcmd;
+  _Bool		Ucmd;
+  _Bool		Ncmd;
+  _Bool 	Ccmd;
 };
-struct state_elements_alu16 sa;
+struct state_elements_control scontrol; 
 
-void initial_alu16()
+void initial_control() 
 {
-	for (unsigned i = 0; i < 4; i = i + 1)
-	    sa.Registers[i] = 0;
-	sa.PC = 0;
-	sa.NPC = 0;
-	sa.IR = 0;
-	sa.A = 0;
-	sa.B = 0;
-	sa.ALUOutput = 0;
-	sa.Cond = 0;
-	sa.LMD = 0;
-	sa.State = IF;
-}
+  scontrol.Lcmd = 0;
+  scontrol.Ucmd = 0;
+  scontrol.Ncmd = 1;
+  scontrol.Ccmd = 0;
+  scontrol.prev = 0;
+}    
 
-void alu16(
-  _Bool clk,
-  unsigned short int *PC, 
-  unsigned short int instruction, 
-  unsigned short int *ALUOutput,
-  unsigned short int datain, 
-  unsigned short int *dataout,
-  _Bool *wr)
+void control(
+    _Bool	clock,
+    _Bool 	reset,
+    unsigned char	in,
+    _Bool	*Lcmd,
+    _Bool	*Ucmd,
+    _Bool	*Ncmd,
+    _Bool	*Ccmd)
 {
-    // Interesting fields of the instruction register.
-    unsigned char	  opcode = sa.IR&0x7;
-    unsigned char	  adFld1 = ((sa.IR>>3)&0x3);
-    unsigned char	  adFld2 = ((sa.IR>>3)&0x3);
-    unsigned char	  adFld3 = ((sa.IR>>7)&0x3);
-    unsigned short int immFld = ((sa.IR>>7)&0x1FF);
-    unsigned char	funFld = ((sa.IR>>9)&0x7F);
 
-
-  // Decoding of the instruction type.
-  _Bool memRef = (opcode == LW || opcode == SW);
-  _Bool	regRegALU = (opcode == ALUop);
-  _Bool regImmALU = (opcode == ADDI || opcode == SUBI);
-  _Bool	branch = (opcode == BEQZ);
-  // Immediate operand with sign extension.
-  unsigned short int	Imm =  ((((immFld>>8)&0x1) & 0xFF) << 7) | (immFld & 0xFF);
+  _Bool	load;
 
   // clocked block
-	switch(sa.State) {
-	 case 0: {
-              sa.NPC = sa.PC + 2;
-              sa.IR = instruction;
-              break;
-        } // case: IF
-	 case 1: {
-              sa.A = sa.Registers[adFld1];
-              sa.B = sa.Registers[adFld2];
-              break;
-        } // case: ID
-	 case 2: {
-              if (memRef) {
-                *ALUOutput = sa.A + Imm;
-              } // if (memRef)
-              else if (regRegALU) {
-                if (funFld == ADD)
-                  *ALUOutput = sa.A + sa.B;
-                else if (funFld == SUB)
-                  *ALUOutput = sa.A - sa.B;
-                else if (funFld == AND)
-                  *ALUOutput = sa.A & sa.B;
-                else if (funFld == OR)
-                  *ALUOutput = sa.A | sa.B;
-                else if (funFld == XOR)
-                  *ALUOutput = sa.A ^ sa.B;
-                else if (funFld == SRL)
-                  *ALUOutput = ((0&0x0000)<<15) | ((sa.A>>1)&0x7FFF);
-              } // if (regRegALU)
-              else if (regImmALU) {
-                if (opcode == ADDI)
-                  *ALUOutput = sa.A + Imm;
-                else if (opcode == SUBI)
-                  *ALUOutput = sa.A - Imm;
-              } // if (regImmALU)
-              else if (branch) {
-                *ALUOutput =  ((0x0<<11) | (sa.NPC&0xfff)) + ((Imm<<1) | 0);
-                sa.Cond = (sa.A == 0);
-              } // if (branch)
-            break;
-            } // case: EX
-   case 3: {
-               if (memRef) {
-                 if (opcode == LW)
-                   sa.LMD = datain;
-               } // if (memRef)
-               if (branch) {
-                 if (sa.Cond)
-                   sa.PC = *ALUOutput&0xFFF;
-                 else
-                   sa.PC = sa.NPC;
-               } 
-               else
-                 sa.PC = sa.NPC;
-             } // case: MEM
-   case 4: {
-              if (regRegALU) {
-                if (adFld3 != 0)
-                  sa.Registers[adFld3] = *ALUOutput;
-              } 
-              else if (regImmALU) {
-                if (adFld2 != 0)
-                  sa.Registers[adFld2] = *ALUOutput;
-              } 
-              else if (opcode == LW) {
-                if (adFld2 != 0)
-                  sa.Registers[adFld2] = sa.LMD;
-              }
-            } // case: WB
-  } // case (State)
-	
-  // State update.
-	if (sa.State == 4)
-	    sa.State = 0;
+  if (reset)
+    scontrol.prev = 0;
+  else
+    scontrol.prev = in;
+
+  load = (scontrol.prev == 0x1b); // escape
+
+  if (reset) {
+    scontrol.Ncmd = 1;
+    scontrol.Lcmd = 0; scontrol.Ucmd = 0; scontrol.Ccmd = 0;
+  }
+  else if (load) {
+    switch (in) {
+      case 0x4c: { // L
+                   scontrol.Lcmd = 1; scontrol.Ucmd = 0; scontrol.Ncmd = 0; scontrol.Ccmd = 0;
+                   break;
+                 }
+      case 0x55: { // U
+                   scontrol.Lcmd = 0; scontrol.Ucmd = 1; scontrol.Ncmd = 0; scontrol.Ccmd = 0;
+                   break;
+                 }
+      case 0x4e: { // N
+                   scontrol.Lcmd = 0; scontrol.Ucmd = 0; scontrol.Ncmd = 1; scontrol.Ccmd = 0;
+                   break;
+                 }
+      case 0x43: { // C
+                   scontrol.Lcmd = 0; scontrol.Ucmd = 0; scontrol.Ncmd = 0; scontrol.Ccmd = 1;
+                   break;
+                 }
+      default: {
+                 scontrol.Lcmd = 0; scontrol.Ucmd = 0; scontrol.Ncmd = 0; scontrol.Ccmd = 0;
+                 break;
+               }
+    }
+  } // if (load)
+  *Lcmd = scontrol.Lcmd;
+  *Ucmd = scontrol.Ucmd;
+  *Ncmd = scontrol.Ncmd;
+  *Ccmd = scontrol.Ccmd;
+
+} // control
+
+// Utility functions
+_Bool isUpper(
+	unsigned char   in)
+{
+  _Bool isupper;
+  isupper = ~((in>>5)&1);
+  return isupper;
+}
+
+unsigned char toLower(
+	unsigned char   in)
+{
+  unsigned char tolower;
+	if (isUpper(in))
+	    tolower = in + 0x20;
 	else
-	    sa.State = sa.State + 1;
+	    tolower = in;
+  return tolower;
+}
 
-  // Combinational outputs.
-  *dataout = sa.B;
-  *wr = (sa.State == MEM) & (opcode == SW);
+unsigned char toUpper(
+	unsigned char   in)
+{
+	unsigned char toupper;
+	if (!isUpper(in))
+	    toupper = in - 0x20;
+	else
+	    toupper = in;
+  return toupper;
+}
 
-  // update the output
-  *PC = sa.PC;
+unsigned char changeCase(
+	unsigned char   in)
+{
+	unsigned char changecase;
+  if (isUpper(in))
+	    changecase = in + 0x20;
+	else
+	    changecase = in - 0x20;
+  return changecase;
+}    
 
-  // #PASS: The program counter is always aligned on a half-word boundary.
-  //assert((sa.PC&0x1)==0 && (sa.NPC&0x1)==0);
+void transform(
+    unsigned char in,
+    _Bool	 Lcmd,
+    _Bool	 Ucmd,
+    _Bool	 Ncmd,
+    _Bool	 Ccmd,
+    unsigned char *out)
+{
+    *out = Lcmd ? toLower(in) :
+	   Ucmd ? toUpper(in) :
+	   Ncmd ? in :
+	   Ccmd ? changeCase(in) : 0x00;
+}
 
-  // #PASS: Register R0 is never written.
-  assert(sa.Registers[0]==0);
+struct state_elements_main {
+  unsigned char regIn;
+  unsigned char dataOut;
+};
+struct state_elements_main smain; 
 
-  // #PASS: The state is between 0 and 4.
-  //assert((((sa.State>>2)&0x1)==0) || ((sa.State&0x3)==0));
+void initial() {
+	smain.regIn = 0;
+	smain.dataOut = 0;
+}
+
+void vlunc(
+    _Bool	 clock,
+    _Bool 	 reset,
+    unsigned char	 dataIn,
+    unsigned char *dataOut)
+{
+    unsigned char transformed;
+    _Bool	 Lcmd, Ucmd, Ncmd, Ccmd;
+    
+    control(clock,reset,smain.regIn,&Lcmd,&Ucmd,&Ncmd,&Ccmd);
+    
+    transform(smain.regIn,Lcmd,Ucmd,Ncmd,Ccmd,&transformed);
+    
+    // clocked block
+	if (reset) {
+	    smain.dataOut = 0;
+	    smain.regIn = 0;
+  } else {
+	    smain.dataOut = transformed;
+	    smain.regIn = dataIn;
+  } // else: !if(reset)
+
+  *dataOut=smain.dataOut;
+
+  /*#FAILS: If the output is a lowercase character and Lcmd is asserted,
+  # then Lcmd must be deasserted or the output continues to be a lowercase
+  # character.*/
+  if(Lcmd==1 || (((*dataOut>>5)&1)==1)) { 
+    assert(Lcmd!=0); 
+  }
 }
 
 int main()
 {
-  _Bool clk=0;
-  unsigned short int PC;
-  unsigned short int instruction;
-  unsigned short int ALUOutput;
-  unsigned short int datain;
-  unsigned short int dataout;
-  _Bool wr;
-
-  initial_alu16();
-  
-  datain=__VERIFIER_nondet_uint();
-  instruction=__VERIFIER_nondet_uint();
-  alu16(clk,&PC,instruction,&ALUOutput,datain,&dataout,&wr);
-  alu16(clk,&PC,instruction,&ALUOutput,datain,&dataout,&wr);
-  alu16(clk,&PC,instruction,&ALUOutput,datain,&dataout,&wr);
-  alu16(clk,&PC,instruction,&ALUOutput,datain,&dataout,&wr);
-  alu16(clk,&PC,instruction,&ALUOutput,datain,&dataout,&wr);
+  _Bool	 clock=0;
+   _Bool 	 reset=__VERIFIER_nondet_bool();
+  unsigned char	 dataIn=__VERIFIER_nondet_uchar();
+  unsigned char dataOut;
+  initial();
+  initial_control();
+  while(1) {
+    reset = __VERIFIER_nondet_bool();
+    dataIn = __VERIFIER_nondet_uchar();
+    vlunc(clock,reset,dataIn,&dataOut);
+  }
+  return 1;
 }
+
+
+
