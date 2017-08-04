@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_main{
   _Bool rx_status_3;
@@ -297,34 +298,30 @@ int main() {
   _Bool load_buff;
   unsigned int shift_reg;
   unsigned char frame_ofs;
-  _Bool   nondet_bool;
-  unsigned char nondet_uchar;
-  __ASTREE_volatile_input((nondet_bool));
-  __ASTREE_volatile_input((nondet_uchar));
   
   initial(&clock_out, &rx_status, &parity, &load_A, &load_B, &load_buff, &shift_reg, &frame_ofs);
 
   reset = 1;
-   xtal = nondet_uchar;
-   rx_control = nondet_uchar;
-   bit_in = nondet_bool;
-   preamble_1 = nondet_bool;
-   preamble_2 = nondet_bool; 
-   preamble_3 = nondet_bool;
-   carrier_loss = nondet_bool;
-   biphase_violation = nondet_bool;
+   xtal = __VERIFIER_nondet_bool();
+   rx_control = __VERIFIER_nondet_uchar();
+   bit_in = __VERIFIER_nondet_bool();
+   preamble_1 = __VERIFIER_nondet_bool();
+   preamble_2 = __VERIFIER_nondet_bool();
+   preamble_3 = __VERIFIER_nondet_bool();
+   carrier_loss = __VERIFIER_nondet_bool();
+   biphase_violation = __VERIFIER_nondet_bool();
   daio(xtal, rx_control, reset, bit_in, preamble_1, preamble_2, preamble_3, carrier_loss, biphase_violation, &clock_out, &rx_status, &parity, &load_A, &load_B, &load_buff, &shift_reg, &frame_ofs);
 
   reset = 0;
   while(1) {
-   xtal = nondet_uchar;
-   rx_control = nondet_uchar;
-   bit_in = nondet_bool;
-   preamble_1 = nondet_bool;
-   preamble_2 = nondet_bool; 
-   preamble_3 = nondet_bool;
-   carrier_loss = nondet_bool;
-   biphase_violation = nondet_bool;
+   xtal = __VERIFIER_nondet_uchar();
+   rx_control = __VERIFIER_nondet_uchar();
+   bit_in = __VERIFIER_nondet_bool();
+   preamble_1 = __VERIFIER_nondet_bool();
+   preamble_2 = __VERIFIER_nondet_bool(); 
+   preamble_3 = __VERIFIER_nondet_bool();
+   carrier_loss = __VERIFIER_nondet_bool();
+   biphase_violation = __VERIFIER_nondet_bool();
    
    daio(xtal, rx_control, reset, bit_in, preamble_1, preamble_2, preamble_3, carrier_loss, biphase_violation, &clock_out, &rx_status, &parity, &load_A, &load_B, &load_buff, &shift_reg, &frame_ofs);
 

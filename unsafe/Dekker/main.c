@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_main{
   _Bool c[2];
@@ -82,11 +83,9 @@ int main() {
  _Bool clock=0;
  _Bool select;
  _Bool pause;
- _Bool   nondet_bool;
- __ASTREE_volatile_input((nondet_bool));
 
  initial(clock, select, pause);
- select = nondet_bool;
+ select = __VERIFIER_nondet_bool();
  dekker(clock, select, pause);
  // Mutual exclusion property, both the processes can not be in the critical
  // section at the same time

@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_main{
  unsigned char valid;
@@ -66,9 +67,6 @@ int main() {
   unsigned char issue0;
   unsigned char issue1;
   unsigned char valid;
-  unsigned char nondet_uchar;
-  __ASTREE_volatile_input((nondet_uchar));
-
 
   initial_main();
 
@@ -83,10 +81,10 @@ int main() {
   */
 
   while(1) {
-    iqLoads = nondet_uchar;
-    exeReady = nondet_uchar;
-    opsReady = nondet_uchar;
-    flush = nondet_uchar;
+    iqLoads = __VERIFIER_nondet_uchar();
+    exeReady = __VERIFIER_nondet_uchar();
+    opsReady = __VERIFIER_nondet_uchar();
+    flush = __VERIFIER_nondet_uchar();
 
   ibuf(clock, iqLoads, exeReady, opsReady, flush, &load0, &load1, &load2, &issue0, &issue1, &valid);
   

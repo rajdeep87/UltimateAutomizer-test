@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_main {
   unsigned short int word;
@@ -136,10 +137,8 @@ void unidec(
 int main()
 {
   _Bool	clk=0;
-  unsigned char  nc;
-  __ASTREE_volatile_input((nc));
-  unsigned char sel1 = nc;
-  unsigned char sel2 = nc;
+  unsigned char sel1 = __VERIFIER_nondet_uchar();
+  unsigned char sel2 = __VERIFIER_nondet_uchar();
   _Bool found;
   while(1) {
     unidec(clk, sel1, sel2, &found);

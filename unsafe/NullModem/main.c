@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 // parameter
 int RxInit_c = 0x3FF;
@@ -103,7 +104,7 @@ void UartRx(_Bool clk, _Bool ResetF, _Bool Serial_InT, _Bool *DataRdyT, unsigned
 	    srx.Count16 = srx.Count16 + 1;
   }
 
-	// Normal counter increment modulo 16
+	// Normal counter modulo 16
 	else {
 	    srx.Count16 = srx.Count16 + 1;
   }
@@ -182,14 +183,10 @@ int main()
   _Bool dataRdy;
   _Bool bitClock;
 
-  _Bool   nb;
-  __ASTREE_volatile_input((nb));
-  unsigned char nc;
-  __ASTREE_volatile_input((nc));
-  serialOut = nb;
-  reset = nb;
-  load = nb;
-  dataIn=nc; 
+  serialOut = __VERIFIER_nondet_bool();
+  reset = __VERIFIER_nondet_bool();
+  load = __VERIFIER_nondet_bool();
+  dataIn=__VERIFIER_nondet_uchar(); 
   
   
   serialIn = serialOut;

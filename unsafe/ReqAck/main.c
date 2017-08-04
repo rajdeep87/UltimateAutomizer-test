@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 int idle = 0;
 int starting = 1;
@@ -39,9 +40,7 @@ void initial_reqAck()
 void reqAck(_Bool clock, _Bool req, _Bool *ack)
 {
 
-  _Bool   nb;
-  __ASTREE_volatile_input((nb));
-  _Bool	start=nb;
+  _Bool	start=__VERIFIER_nondet_bool();
   _Bool	ready;
   
   slave (clock,start,&ready);

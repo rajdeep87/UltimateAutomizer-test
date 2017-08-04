@@ -1,4 +1,5 @@
-#include <assert.h>
+extern void __VERIFIER_error() __attribute__((noreturn));
+void assert (int cond) { if (!cond) __VERIFIER_error (); }
 
 struct state_elements_control {
   unsigned char prev;
@@ -175,18 +176,14 @@ void vlunc(
 int main()
 {
   _Bool	 clock=0;
-  _Bool   nb;
-  unsigned char nc;
-  __ASTREE_volatile_input((nb));
-  __ASTREE_volatile_input((nc));
-   _Bool 	 reset=nb;
-  unsigned char	 dataIn=nc;
+   _Bool 	 reset=__VERIFIER_nondet_bool();
+  unsigned char	 dataIn=__VERIFIER_nondet_uchar();
   unsigned char dataOut;
   initial();
   initial_control();
   while(1) {
-    reset = nb;
-    dataIn = nc;
+    reset = __VERIFIER_nondet_bool();
+    dataIn = __VERIFIER_nondet_uchar();
     vlunc(clock,reset,dataIn,&dataOut);
   }
   return 1;
