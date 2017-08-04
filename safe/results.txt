@@ -1,0 +1,43 @@
+ajdeeps-MacBook-Pro:UAutomizer-linux rajdeep$ grep -E 'Starting to processing|RESULT' progress.log-ultimate 
+Starting to processing 6s177/main.c at Thu  3 Aug 16:05:45 BST 2017
+RESULT: Ultimate could not prove your program: Timeout
+Starting to processing 6s33/main.c at Thu  3 Aug 17:03:14 BST 2017
+Starting to processing Arbiter/main.c at Thu  3 Aug 17:59:35 BST 2017
+RESULT: Ultimate could not prove your program: Toolchain returned no result.
+Starting to processing b01/main.c at Thu  3 Aug 18:02:30 BST 2017
+RESULT: Ultimate proved your program to be correct!
+Starting to processing b02/main.c at Thu  3 Aug 18:02:40 BST 2017
+RESULT: Ultimate proved your program to be correct!
+Starting to processing b03/main.c at Thu  3 Aug 18:02:57 BST 2017
+RESULT: Ultimate proved your program to be correct!
+Starting to processing b06/main.c at Thu  3 Aug 18:03:17 BST 2017
+RESULT: Ultimate could not prove your program: Timeout
+Starting to processing b07/main.c at Thu  3 Aug 18:56:54 BST 2017
+RESULT: Ultimate proved your program to be correct!
+Starting to processing b08/main.c at Thu  3 Aug 18:58:05 BST 2017
+RESULT: Ultimate proved your program to be correct!
+Starting to processing Barrel/main.c at Thu  3 Aug 18:58:09 BST 2017
+RESULT: Ultimate could not prove your program: Toolchain returned no result.
+Starting to processing BufAl/main.c at Thu  3 Aug 18:58:11 BST 2017
+RESULT: Ultimate could not prove your program: Toolchain returned no result.
+Starting to processing CRC/main.c at Thu  3 Aug 18:58:13 BST 2017
+Starting to processing FIFO/main.c at Thu  3 Aug 19:39:38 BST 2017
+RESULT: Ultimate could not prove your program: Toolchain returned no result.
+Starting to processing FourbyFour/main.c at Thu  3 Aug 19:56:10 BST 2017
+RESULT: Ultimate could not prove your program: Toolchain returned no result.
+Starting to processing RCU/main.c at Thu  3 Aug 19:56:12 BST 2017
+RESULT: Ultimate could not prove your program: Toolchain returned no result.
+Starting to processing Rrobin/main.c at Thu  3 Aug 20:39:37 BST 2017
+RESULT: Ultimate proved your program to be correct!
+Starting to processing Spinner/main.c at Thu  3 Aug 20:39:40 BST 2017
+RESULT: Ultimate proved your program to be correct!
+Starting to processing traffic_light_example/main.c at Thu  3 Aug 20:54:22 BST 2017
+RESULT: Ultimate proved your program to be correct!
+Starting to processing uart/main.c at Thu  3 Aug 21:29:31 BST 2017
+RESULT: Ultimate could not prove your program: Toolchain returned no result.
+Starting to processing Vending/main.c at Thu  3 Aug 21:29:33 BST 2017
+RESULT: Ultimate proved your program to be correct!
+Starting to processing Vlunc/main.c at Thu  3 Aug 21:29:37 BST 2017
+RESULT: Ultimate could not prove your program: Toolchain returned no result.
+Starting to processing Vsa16/main.c at Thu  3 Aug 21:44:16 BST 2017
+RESULT: Ultimate proved your program to be correct!
