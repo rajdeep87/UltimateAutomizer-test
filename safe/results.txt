@@ -1,3 +1,5 @@
+#Results obtained using 1 hr timeout
+
 ajdeeps-MacBook-Pro:UAutomizer-linux rajdeep$ grep -E 'Starting to processing|RESULT' progress.log-ultimate 
 Starting to processing 6s177/main.c at Thu  3 Aug 16:05:45 BST 2017
 RESULT: Ultimate could not prove your program: Timeout
