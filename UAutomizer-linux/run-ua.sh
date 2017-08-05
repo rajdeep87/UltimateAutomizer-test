@@ -2,7 +2,7 @@ PWD=`pwd`
 TIMEOUT=3600
 TOOL=ultimate
 BENCHMARKDIRS=`cat benchmarks.txt`
-PROGRESSLOG=${PWD}/progress-unsafe.log-${TOOL}
+PROGRESSLOG=${PWD}/progress-safe.log-${TOOL}
 echo "Starting experiments at `date` on `hostname`" > ${PROGRESSLOG}
 for DIR in ${BENCHMARKDIRS}
 do

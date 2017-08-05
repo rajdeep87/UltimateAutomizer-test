@@ -1,24 +1,37 @@
 Starting to processing b01/main.c at Fri  4 Aug 13:41:17 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 24.7807
 Starting to processing b02/main.c at Fri  4 Aug 13:41:29 BST 2017
+runsolver_cputime: 28.0383
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 19.4058
 Starting to processing DAIO/main.c at Fri  4 Aug 13:41:39 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 16.1693
 Starting to processing Dekker/main.c at Fri  4 Aug 13:41:44 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 6.40907
 Starting to processing FIFO/main.c at Fri  4 Aug 13:41:47 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 44.3573
 Starting to processing Ibuf/main.c at Fri  4 Aug 13:42:19 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 10.7567
 Starting to processing non-pipelined-microprocessor/main.c at Fri  4 Aug 13:42:23 BST 2017
 RESULT: Ultimate could not prove your program: Toolchain returned no result.
+runsolver_cputime: 1569.69
 Starting to processing NullModem/main.c at Fri  4 Aug 14:08:19 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 27.5347
 Starting to processing ReqAck/main.c at Fri  4 Aug 14:08:35 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 9.43608
 Starting to processing Rotate/main.c at Fri  4 Aug 14:08:39 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 6.6142
 Starting to processing Unidec/main.c at Fri  4 Aug 14:08:41 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 18.4112
 Starting to processing Vlunc/main.c at Fri  4 Aug 14:08:49 BST 2017
 RESULT: Ultimate proved your program to be incorrect!
+runsolver_cputime: 70.9108
